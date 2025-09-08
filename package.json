@@ -1,0 +1,15 @@
+{
+  "name": "todolist-fullstack",
+  "version": "1.0.0",
+  "description": "Full-stack TodoList application",
+  "main": "api/index.js",
+  "scripts": {
+    "build": "npm install && cd frontend && npm install && npm run build",
+    "start": "node api/index.js",
+    "dev:frontend": "cd frontend && npm run dev",
+    "dev:backend": "cd backend && npm run dev"
+  },
+  "keywords": ["todo", "react", "express", "vercel"],
+  "author": "User",
+  "license": "MIT"
+}

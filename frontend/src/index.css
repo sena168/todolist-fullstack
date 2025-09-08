@@ -1,0 +1,360 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* CSS Variables for theming */
+:root {
+  /* Dark theme (default) */
+  --background: #000000;
+  --foreground: #fdfdfd;
+  --muted: #a4a7ae;
+  --border: #181d27;
+  --primary: #0c4bca;
+  --primary-foreground: #ffffff;
+  --secondary: #0a0d12;
+  --secondary-foreground: #fdfdfd;
+  --accent: #0c4bca;
+  --accent-foreground: #ffffff;
+  --destructive: #d9206e;
+  --destructive-foreground: #ffffff;
+  --success: #079455;
+  --success-foreground: #ffffff;
+  --warning: #fdb022;
+  --warning-foreground: #000000;
+  --card-background: #0a0d12;
+  --card-border: #181d27;
+  --input-background: #0a0d12;
+  --input-border: #181d27;
+  --tab-background: #0a0d12;
+  --tab-border: #181d27;
+  --chip-background: #181d27;
+  --chip-foreground: #fdfdfd;
+}
+
+/* Light theme */
+.light {
+  --background: #ffffff;
+  --foreground: #0a0d12;
+  --muted: #717680;
+  --border: #dedcdc;
+  --primary: #0c4bca;
+  --primary-foreground: #ffffff;
+  --secondary: #fafafa;
+  --secondary-foreground: #0a0d12;
+  --accent: #0c4bca;
+  --accent-foreground: #ffffff;
+  --destructive: #d9206e;
+  --destructive-foreground: #ffffff;
+  --success: #079455;
+  --success-foreground: #ffffff;
+  --warning: #fdb022;
+  --warning-foreground: #000000;
+  --card-background: #fafafa;
+  --card-border: #dedcdc;
+  --input-background: #ffffff;
+  --input-border: #dedcdc;
+  --tab-background: #fafafa;
+  --tab-border: #dedcdc;
+  --chip-background: #dedcdc;
+  --chip-foreground: #0a0d12;
+}
+
+/* Global styles */
+* {
+  box-sizing: border-box;
+}
+
+/* Remove focus outlines globally */
+*:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+input:focus {
+  outline: none !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  min-height: 100vh;
+  background-color: #000000 !important; /* Pure black for dark theme */
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  min-height: 100vh;
+  background-color: #000000 !important; /* Pure black for dark theme */
+}
+
+/* Light theme override */
+.light {
+  background-color: #ffffff !important; /* White for light theme */
+}
+
+.light body {
+  background-color: #ffffff !important; /* White for light theme */
+}
+
+#root {
+  min-height: 100vh;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #000000 !important; /* Pure black for dark theme */
+  font-family: 'SF Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+    'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Light theme override */
+.light #root {
+  background-color: #ffffff !important; /* White for light theme */
+}
+
+/* Light theme for main container */
+.light .min-h-screen {
+  background-color: #ffffff !important; /* White for light theme */
+}
+
+/* Override specific elements that should be white in light theme */
+.light .bg-black {
+  background-color: #ffffff !important; /* White for light theme */
+}
+
+/* Custom scrollbar styles - Transparent for both mobile and desktop */
+.scrollbar-thin {
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+}
+
+.scrollbar-thumb-transparent {
+  scrollbar-color: transparent transparent;
+}
+
+.scrollbar-track-transparent {
+  scrollbar-color: transparent transparent;
+}
+
+/* Webkit scrollbar styles - Transparent for both mobile and desktop */
+.scrollbar-thin::-webkit-scrollbar {
+  width: 6px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background: transparent;
+  border-radius: 3px;
+}
+
+/* Global scrollbar styles for all elements */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 6px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: transparent;
+  border-radius: 3px;
+}
+
+/* Focus styles for accessibility */
+*:focus {
+  outline: 2px solid #0c4bca;
+  outline-offset: 2px;
+}
+
+/* Remove focus outline for mouse users */
+*:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Custom focus visible styles */
+*:focus-visible {
+  outline: 2px solid #0c4bca;
+  outline-offset: 2px;
+}
+
+/* Smooth transitions for better UX */
+* {
+  transition: color 0.2s ease, background-color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+/* Ensure proper text rendering */
+body {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom CSS variables for consistent theming */
+:root {
+  --background: #0a0d12;
+  --foreground: #fdfdfd;
+  --muted: #a4a7ae;
+  --border: #181d27;
+  --primary: #0c4bca;
+  --primary-foreground: #ffffff;
+  --secondary: #181d27;
+  --secondary-foreground: #a4a7ae;
+  --accent: #0c4bca;
+  --accent-foreground: #ffffff;
+  --destructive: #d9206e;
+  --destructive-foreground: #ffffff;
+  --success: #079455;
+  --success-foreground: #ffffff;
+  --warning: #fdb022;
+  --warning-foreground: #000000;
+  --card-background: #0a0d12;
+  --card-border: #181d27;
+  --input-background: #0a0d12;
+  --input-border: #181d27;
+  --tab-background: #0a0d12;
+  --tab-border: #181d27;
+  --chip-background: #181d27;
+  --chip-foreground: #a4a7ae;
+  --radius: 0.5rem;
+}
+
+/* Dark theme (default) */
+.dark {
+  --background: #0a0d12;
+  --foreground: #fdfdfd;
+  --muted: #a4a7ae;
+  --border: #181d27;
+  --primary: #0c4bca;
+  --primary-foreground: #ffffff;
+  --secondary: #181d27;
+  --secondary-foreground: #a4a7ae;
+  --accent: #0c4bca;
+  --accent-foreground: #ffffff;
+  --destructive: #d9206e;
+  --destructive-foreground: #ffffff;
+  --success: #079455;
+  --success-foreground: #ffffff;
+  --warning: #fdb022;
+  --warning-foreground: #000000;
+  --card-background: #0a0d12;
+  --card-border: #181d27;
+  --input-background: #0a0d12;
+  --input-border: #181d27;
+  --tab-background: #0a0d12;
+  --tab-border: #181d27;
+  --chip-background: #181d27;
+  --chip-foreground: #a4a7ae;
+}
+
+/* Light theme - Based on Figma specifications */
+.light {
+  --background: #ffffff;
+  --foreground: #0a0d12;
+  --muted: #717680;
+  --border: #dedcdc;
+  --primary: #0c4bca;
+  --primary-foreground: #ffffff;
+  --secondary: #fafafa;
+  --secondary-foreground: #0a0d12;
+  --accent: #0c4bca;
+  --accent-foreground: #ffffff;
+  --destructive: #d9206e;
+  --destructive-foreground: #ffffff;
+  --success: #079455;
+  --success-foreground: #ffffff;
+  --warning: #fdb022;
+  --warning-foreground: #000000;
+  --card-background: #fafafa;
+  --card-border: #dedcdc;
+  --input-background: #ffffff;
+  --input-border: #dedcdc;
+  --tab-background: #fafafa;
+  --tab-border: #dedcdc;
+  --chip-background: #dedcdc;
+  --chip-foreground: #0a0d12;
+}
+
+/* Utility classes for consistent spacing and typography */
+.text-balance {
+  text-wrap: balance;
+}
+
+.text-pretty {
+  text-wrap: pretty;
+}
+
+/* Animation utilities */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.2s ease-out;
+}
+
+.animate-slide-in {
+  animation: slideIn 0.2s ease-out;
+}
+
+/* Print styles */
+@media print {
+  * {
+    background: transparent !important;
+    color: black !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  a,
+  a:visited {
+    text-decoration: underline;
+  }
+
+  a[href]:after {
+    content: ' (' attr(href) ')';
+  }
+
+  abbr[title]:after {
+    content: ' (' attr(title) ')';
+  }
+
+  .no-print {
+    display: none !important;
+  }
+}
