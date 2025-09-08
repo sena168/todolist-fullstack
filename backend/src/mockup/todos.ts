@@ -1,4 +1,4 @@
-import { NewTodo, Todo } from 'types/todos';
+import { NewTodo, Todo } from '../types/todos';
 import { v4 as uuid } from 'uuid';
 
 type StoredTodo = Omit<Todo, 'priority'> & { priority?: Todo['priority'] };

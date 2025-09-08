@@ -1,61 +1,149 @@
-# TodoList App - Vercel Deployment Guide
+# 🚀 Deployment Guide
 
 ## Overview
-This guide will help you deploy both the backend and frontend to Vercel for 24/7 online access.
+This guide will help you deploy your Todo application using:
+- **Render** for backend + database
+- **Vercel** for frontend
 
-## Backend Deployment Steps
+## 📋 Prerequisites
+- GitHub account (✅ Done - Repository: https://github.com/sena168/todolist-fullstack)
+- Render account (free)
+- Vercel account (free)
 
-1. **Navigate to backend directory**:
-   ```bash
-   cd backend
-   ```
+## 🔧 Step 1: Deploy Backend to Render
 
-2. **Login to Vercel** (first time only):
-   ```bash
-   vercel login
-   ```
+### 1.1 Create Render Account
+1. Go to [render.com](https://render.com)
+2. Sign up with your GitHub account
+3. Connect your GitHub account
 
-3. **Deploy backend**:
-   ```bash
-   vercel --prod
-   ```
-   - Choose "Link to existing project?" → **N** (No)
-   - Project name: `todolist-backend` (or your preferred name)
-   - Directory: `.` (current directory)
-   - Override settings? → **N** (No)
+### 1.2 Deploy Backend Service
+1. Click **"New +"** → **"Web Service"**
+2. Connect your repository: `sena168/todolist-fullstack`
+3. Configure the service:
+   - **Name**: `todolist-backend`
+   - **Root Directory**: `backend`
+   - **Environment**: `Node`
+   - **Build Command**: `npm install && npm run build`
+   - **Start Command**: `npm start`
+   - **Instance Type**: `Free`
 
-4. **Copy the deployment URL** - you'll need this for the frontend!
+### 1.3 Set Environment Variables
+In Render dashboard, go to your service → Environment:
+```
+NODE_ENV=production
+PORT=10000
+FRONTEND_URL=https://your-frontend.vercel.app
+```
 
-## Frontend Deployment Steps
+### 1.4 Deploy
+1. Click **"Create Web Service"**
+2. Wait for deployment (5-10 minutes)
+3. Copy your backend URL: `https://todolist-backend-xxxx.onrender.com`
 
-1. **Navigate to frontend directory**:
-   ```bash
-   cd ../frontend
-   ```
+## 🌐 Step 2: Deploy Frontend to Vercel
 
-2. **Update API URL** in `src/lib/api.ts`:
-   Replace `http://localhost:8080` with your backend deployment URL
+### 2.1 Create Vercel Account
+1. Go to [vercel.com](https://vercel.com)
+2. Sign up with your GitHub account
 
-3. **Deploy frontend**:
-   ```bash
-   vercel --prod
-   ```
-   - Choose "Link to existing project?" → **N** (No)
-   - Project name: `todolist-frontend` (or your preferred name)
-   - Directory: `.` (current directory)
-   - Override settings? → **N** (No)
+### 2.2 Deploy Frontend
+1. Click **"New Project"**
+2. Import `sena168/todolist-fullstack`
+3. Configure:
+   - **Framework Preset**: `Vite`
+   - **Root Directory**: `frontend`
+   - **Build Command**: `npm run build`
+   - **Output Directory**: `dist`
 
-## Final Steps
+### 2.3 Set Environment Variables
+In Vercel dashboard, go to your project → Settings → Environment Variables:
+```
+VITE_API_BASE_URL=https://todolist-backend-xxxx.onrender.com
+```
 
-1. **Test your deployed app** using the frontend URL
-2. **Update CORS settings** if needed (backend automatically allows all origins)
-3. **Your app is now live 24/7!**
+### 2.4 Deploy
+1. Click **"Deploy"**
+2. Wait for deployment (2-3 minutes)
+3. Copy your frontend URL: `https://your-project.vercel.app`
 
-## URLs After Deployment
-- **Backend API**: `https://your-backend-name.vercel.app`
-- **Frontend App**: `https://your-frontend-name.vercel.app`
+## 🔄 Step 3: Update CORS Configuration
 
-## Notes
-- Both applications will auto-deploy on future git pushes
-- The backend uses in-memory storage, so data resets on each deployment
-- Consider upgrading to a database (MongoDB, PostgreSQL) for persistent data
+### 3.1 Update Backend Environment
+Go back to Render → Your Backend Service → Environment:
+```
+FRONTEND_URL=https://your-actual-frontend.vercel.app
+```
+
+### 3.2 Redeploy Backend
+1. Go to Render dashboard
+2. Click **"Manual Deploy"** → **"Deploy latest commit"**
+
+## 🧪 Step 4: Test Your Application
+
+1. Open your frontend URL: `https://your-project.vercel.app`
+2. Test creating a todo
+3. Test updating/deleting todos
+4. Check browser console for any errors
+
+## 🗄️ Step 5: Add Database (Optional - Later)
+
+### 5.1 Create PostgreSQL Database on Render
+1. In Render dashboard: **"New +"** → **"PostgreSQL"**
+2. Configure:
+   - **Name**: `todolist-database`
+   - **Database**: `todolist`
+   - **User**: `todolist_user`
+   - **Instance Type**: `Free`
+
+### 5.2 Update Backend for Database
+1. Add database connection code
+2. Update environment variables
+3. Migrate from in-memory storage
+
+## 📝 Quick Commands Summary
+
+```bash
+# If you need to make changes and redeploy:
+git add .
+git commit -m "Update: description of changes"
+git push origin main
+
+# Both Render and Vercel will auto-deploy on push!
+```
+
+## 🔗 Your Deployment URLs
+
+- **GitHub Repository**: https://github.com/sena168/todolist-fullstack
+- **Backend (Render)**: `https://todolist-backend-xxxx.onrender.com`
+- **Frontend (Vercel)**: `https://your-project.vercel.app`
+- **API Documentation**: `https://todolist-backend-xxxx.onrender.com/api-docs`
+
+## 🚨 Troubleshooting
+
+### Backend Issues
+- Check Render logs: Dashboard → Your Service → Logs
+- Verify environment variables are set
+- Ensure build command completed successfully
+
+### Frontend Issues
+- Check Vercel deployment logs
+- Verify `VITE_API_BASE_URL` is set correctly
+- Check browser console for CORS errors
+
+### CORS Issues
+- Ensure `FRONTEND_URL` in backend matches your Vercel URL exactly
+- Redeploy backend after updating environment variables
+
+## 🎉 Success!
+
+Your Todo application is now live and accessible worldwide! 🌍
+
+---
+
+**Next Steps:**
+1. Share your app with friends
+2. Add more features
+3. Set up a real database
+4. Add user authentication
+5. Implement push notifications

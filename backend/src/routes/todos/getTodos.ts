@@ -1,6 +1,6 @@
 import express from 'express';
-import { getTodos } from 'mockup/todos';
-import { Todo } from 'types/todos';
+import { getTodos } from '../../mockup/todos';
+import { Todo } from '../../types/todos';
 
 const router = express.Router();
 
