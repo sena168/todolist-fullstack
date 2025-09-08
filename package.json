@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Full-stack TodoList application",
   "main": "api/index.js",
+  "engines": {
+    "node": "18.x"
+  },
   "scripts": {
     "build": "npm install && cd frontend && npm install && npm run build",
     "start": "node api/index.js",
