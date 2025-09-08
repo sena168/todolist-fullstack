@@ -86,7 +86,10 @@ export const app = express();
 // CORS configuration for production
 const corsOptions = {
   origin: process.env.NODE_ENV === 'production' 
-    ? [process.env.FRONTEND_URL || 'https://todolist-fullstack-fbek9vchy-senas-projects-56c0899a.vercel.app']
+    ? [
+        process.env.FRONTEND_URL || 'https://todolist-fullstack-fbek9vchy-senas-projects-56c0899a.vercel.app',
+        'https://todolist-fullstack-fbek9vchy-senas-projects-56c0899a.vercel.app'
+      ]
     : ['http://localhost:3000', 'http://127.0.0.1:3000'],
   credentials: true,
   optionsSuccessStatus: 200
