@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "engines": {
+    "node": "18.x"
+  },
   "scripts": {
     "dev": "cross-env DOTENV_CONFIG_PATH=.env.local nodemon --exec ts-node -r dotenv/config -r tsconfig-paths/register src/app.ts",
     "start": "node dist/app.js",
