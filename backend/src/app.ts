@@ -116,7 +116,7 @@ app.use(
   })
 );
 
-app.use("/todos", todosRouter);
+app.use("/api/todos", todosRouter);
 
 // Only listen when not in serverless environment
 if (require.main === module) {
