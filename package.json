@@ -4,7 +4,7 @@
   "description": "Full-stack TodoList application",
   "main": "api/index.js",
   "engines": {
-    "node": "18.x"
+    "node": "20.x"
   },
   "scripts": {
     "build": "npm install && cd frontend && npm install && npm run build",
