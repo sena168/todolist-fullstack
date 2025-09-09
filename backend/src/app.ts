@@ -89,7 +89,9 @@ const corsOptions = {
     ? [
         process.env.FRONTEND_URL || 'https://todolist-fullstack-eta.vercel.app',
         'https://todolist-fullstack-eta.vercel.app',
-        'https://todolist-fullstack-fbek9vchy-senas-projects-56c0899a.vercel.app' // Add any other Vercel URLs
+        'https://todolist-fullstack-fbek9vchy-senas-projects-56c0899a.vercel.app',
+        'https://todolist-fullstack-7xgxji590-senas-projects-56c0899a.vercel.app',
+        'https://vercel.com/senas-projects-56c0899a/todolist-fullstack/BHbnobYcUqMt6ia5gBqtxw1q8VR3',
       ]
     : ['http://localhost:3000', 'http://127.0.0.1:3000'],
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
