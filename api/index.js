@@ -66,16 +66,17 @@ async function saveTodos(todos) {
 }
 
 module.exports = async function handler(req, res) {
-  // CORS headers - Allow your Vercel frontend
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization, X-Requested-With');
-  res.setHeader('Access-Control-Allow-Credentials', 'true');
+  try {
+    // CORS headers - Allow your Vercel frontend
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization, X-Requested-With');
+    res.setHeader('Access-Control-Allow-Credentials', 'true');
 
-  // Handle preflight requests
-  if (req.method === 'OPTIONS') {
-    return res.status(200).end();
-  }
+    // Handle preflight requests
+    if (req.method === 'OPTIONS') {
+      return res.status(200).end();
+    }
 
   const { method, url } = req;
   console.log(`${method} ${url}`);
@@ -244,6 +245,14 @@ module.exports = async function handler(req, res) {
     });
   }
   
-  // 404 for unmatched routes
-  return res.status(404).json({ error: `Route ${method} ${url} not found` });
+    // 404 for unmatched routes
+    return res.status(404).json({ error: `Route ${method} ${url} not found` });
+  } catch (error) {
+    console.error('API Error:', error);
+    return res.status(500).json({ 
+      error: 'Internal server error', 
+      message: error.message,
+      stack: process.env.NODE_ENV === 'development' ? error.stack : undefined
+    });
+  }
 }
