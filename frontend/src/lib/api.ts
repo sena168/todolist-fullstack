@@ -24,6 +24,8 @@ async function fetchApi<T>(
   const url = `${API_BASE_URL}${endpoint}`;
 
   const response = await fetch(url, {
+    credentials: 'include',
+    mode: 'cors',
     headers: {
       'Content-Type': 'application/json',
       ...options.headers,
