@@ -14,5 +14,9 @@
   },
   "keywords": ["todo", "react", "express", "vercel"],
   "author": "User",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "uuid": "^10.0.0",
+    "@vercel/kv": "^1.0.1"
+  }
 }
